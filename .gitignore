@@ -76,3 +76,9 @@ typings/
 
 # next.js build output
 .next
+
+# firebase files
+*.firebase
+.firebaserc
+firebase.json
+firebase-debug.log
