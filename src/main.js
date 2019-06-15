@@ -21,13 +21,13 @@ const config = {
   storageBucket: 'gs://katie-app.appspot.com'
 };
 
-firebase.initializeApp(config);
-var storageRef = firebase.storage().ref();
-var paintingsRef = storageRef.child('paintings');
-var sculpturesRef = storageRef.child('sculptures');
-console.log(paintingsRef);
+// firebase.initializeApp(config);
+// var storageRef = firebase.storage().ref();
+// var paintingsRef = storageRef.child('paintings/acrylic-painting-techniques-1.jpg');
+// var sculpturesRef = storageRef.child('sculptures');
+// console.log(paintingsRef);
 
-console.log(firebase.storage());
+// console.log(firebase.storage());
 
 new Vue({
   router,
