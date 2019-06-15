@@ -17,6 +17,18 @@ const router = new VueRouter({
   mode: 'history'
 });
 
+const config = {
+  storageBucket: 'gs://katie-app.appspot.com'
+};
+
+firebase.initializeApp(config);
+var storageRef = firebase.storage().ref();
+var paintingsRef = storageRef.child('paintings');
+var sculpturesRef = storageRef.child('sculptures');
+console.log(paintingsRef);
+
+console.log(firebase.storage());
+
 new Vue({
   router,
   render: h => h(App),
