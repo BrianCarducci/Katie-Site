@@ -24,5 +24,8 @@
         margin: 0;
         padding: 0;
     }
+    router-link {
+        color: black;
+    }
    
 </style>

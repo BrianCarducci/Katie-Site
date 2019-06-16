@@ -41,4 +41,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+body {
+    width: calc(100vw - 34px);
+}
 </style>

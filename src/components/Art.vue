@@ -14,11 +14,7 @@ const config = {
 };
 
 firebase.initializeApp(config);
-// var storageRef = firebase.storage().ref();
-// var paintingsRef = storageRef.child('Paintings/acrylic-painting-techniques-1.jpg');
-// var paintingsRef = storageRef.child('/Paintings');
 var paintingsRef = firebase.storage().ref('Paintings');
-
 
 export default {
     data() {
@@ -33,12 +29,6 @@ export default {
                 .then(url => this.imgUrls.push(url))
             })
         }).catch(err => console.log(err));
-    //     paintingsRef.getDownloadURL()
-    //     .then((url) => {
-    //     console.log(url);
-    //     this.src = url;
-    //   })
-    //   .catch((err) => console.log(err));
     }
 }
 </script>
