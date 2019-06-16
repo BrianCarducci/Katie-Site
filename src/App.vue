@@ -14,14 +14,6 @@ import Header from './components/Header.vue'
 import Bio from './components/Bio.vue'
 import Art from './components/Art.vue'
 
-const config = {
-  storageBucket: 'gs://katie-app.appspot.com'
-};
-
-firebase.initializeApp(config);
-var storageRef = firebase.storage().ref();
-var paintingsRef = storageRef.child('Paintings/acrylic-painting-techniques-1.jpg');
-
 
 export default {
   name: 'app',
@@ -36,13 +28,7 @@ export default {
     }
   },
   mounted() {
-    paintingsRef.getDownloadURL()
-      .then((url) => {
-        this.src = url;
-        console.log(this.src);
-      })
-      .catch((err) => console.log(err));
-      console.log(this.src);
+    
   }
 }
 </script>
