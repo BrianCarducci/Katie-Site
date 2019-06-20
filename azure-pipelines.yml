@@ -23,4 +23,8 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: firebase.json
-    artifactName: drop
+    artifactName: fbconfig
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: dist
+    artifactName: webapp
