@@ -20,15 +20,9 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: firebase.json
-    artifactName: fbconfig
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: dist
-    artifactName: webapp
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: deploy.ps1
-    artifactName: deployscript
+- publish: $(System.DefaultWorkingDirectory)/dist
+  artifact: WebApp
+- publish: $(System.DefaultWorkingDirectory)/firebase.json
+  artifact: fbconfig
+- publish: $(System.DefaultWorkingDirectory)/deploy.ps1
+  artifact: deployscript
