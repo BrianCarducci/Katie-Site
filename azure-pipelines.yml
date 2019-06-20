@@ -28,3 +28,7 @@ steps:
   inputs:
     pathtoPublish: dist
     artifactName: webapp
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: deploy.ps1
+    artifactName: drop
