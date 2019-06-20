@@ -23,12 +23,12 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: firebase.json
-    artifactName: fbconfig
+    artifactName: drop
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: dist
-    artifactName: webapp
+    artifactName: dist
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: deploy.ps1
-    artifactName: deployscript
+    artifactName: drop
