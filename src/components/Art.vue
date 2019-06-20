@@ -15,6 +15,7 @@ const config = {
 
 firebase.initializeApp(config);
 var paintingsRef = firebase.storage().ref('Paintings');
+// 
 
 export default {
     data() {
