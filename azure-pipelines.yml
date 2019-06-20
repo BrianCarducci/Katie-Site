@@ -22,13 +22,13 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/firebase.json'
+    pathtoPublish: firebase.json
     artifactName: fbconfig
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+    pathtoPublish: dist
     artifactName: webapp
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/deploy.ps1'
+    pathtoPublish: deploy.ps1
     artifactName: deployscript
