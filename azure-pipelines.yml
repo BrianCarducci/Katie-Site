@@ -24,8 +24,3 @@ steps:
   inputs:
     pathtoPublish: firebase.json
     artifactName: drop
-
-- task: PublishBuildArtifacts@2
-  inputs:
-    pathtoPublish: dist
-    artifactName: drop/dist
