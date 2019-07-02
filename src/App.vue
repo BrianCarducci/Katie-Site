@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container">
       <Header/>
-      <router-view></router-view>
+      <router-view :firebase="firebase"></router-view>
     </div>
     <img :src="src">
   </div>
@@ -11,20 +11,32 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
-import Bio from './components/Bio.vue'
-import Art from './components/Art.vue'
+import Home from './components/Home.vue'
+import About from './components/About.vue'
+import Paintings from './components/Paintings.vue'
+import Ceramics from './components/Ceramics.vue'
+import { compileFunction } from 'vm';
+
+const config = {
+  storageBucket: 'gs://katie-app.appspot.com'
+};
+
+firebase.initializeApp(config);
 
 
 export default {
   name: 'app',
   components: {
     Header,
-    Bio,
-    Art
+    Home,
+    Paintings,
+    Ceramics,
+    About,
   },
   data() {
     return {
-      src: ''
+      src: '',
+      firebase: firebase
     }
   },
   mounted() {

@@ -1,15 +1,19 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
-import Bio from './components/Bio';
-import Art from './components/Art';
+import Home from './components/Home';
+import About from './components/About';
+import Paintings from './components/Paintings';
+import Ceramics from './components/Ceramics';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/', component: Bio},
-  {path: '/art', component: Art}
+  {path: '/', component: Home},
+  {path: '/about', component: About},
+  {path: '/paintings', component: Paintings},
+  {path: '/ceramics', component: Ceramics}
 ];
 
 const router = new VueRouter({

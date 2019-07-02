@@ -1,3 +1,3 @@
 <template>
-    <p>Bio</p>
+    <p>About</p>
 </template>
