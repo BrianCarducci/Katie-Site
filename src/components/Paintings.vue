@@ -1,25 +1,19 @@
 <template>
-    <div>
-        <p>Paintings</p>
-        <!-- <div class=" container mx-auto py-10">
-            <div class="border m-6 rounded-lg  bg-white mx-auto max-w-sm shadow-lg rounded-lg overflow-hidden">
-            	<div class="sm:flex sm:items-center px-6 py-4">
-                	<img class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://api.adorable.io/avatars/196/abott@adorable.png" alt="">
-               		<div class="text-center sm:text-left sm:flex-grow">
-                    	<div class="mb-4">
-                        	<p class="text-xl leading-tight">Jane Doe</p>
-                           	<p class="text-sm leading-tight text-grey-dark">Software Developer at SpongeBob LLC.</p>
-                       	</div>
-                        <div class="flex flex-wrap">
-                        	<button class=" text-xs font-semibold rounded-full px-4 py-1 mx-3  leading-normal bg-white border border-blue text-blue hover:bg-blue hover:text-white">Call</button>
-                        	<button class="  text-xs font-semibold rounded-full px-4 py-1 leading-normal bg-white border border-purple text-purple hover:bg-purple hover:text-white">Message</button>
-                     	</div>
-					</div>
-                 </div>
-            </div>
-       </div> -->
-        <!-- <div v-for="url in imgUrls"> -->
-        <img :src="url" v-for="url in imgUrls">
+    <div class="grid py-8">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg" v-for="url in imgUrls">
+            <img class="w-full" :src="url" alt="Sunset in the mountains">
+            <!-- <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                <p class="text-gray-700 text-base">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                </p>
+            </div> -->
+        <!-- <div class="px-6 py-4">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
+        </div> -->
+        </div>
     </div>
 </template>
 
@@ -43,3 +37,27 @@ export default {
     }
 }
 </script>
+
+
+<style scoped>
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1.5rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        .grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }    
+    }
+
+</style>
+

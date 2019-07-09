@@ -46,14 +46,14 @@ export default {
 </script>
 
 <style>
+html {
+  overflow-y: scroll;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
-body {
-    width: calc(100vw - 34px);
-}
+
 </style>
