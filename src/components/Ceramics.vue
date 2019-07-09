@@ -1,7 +1,9 @@
 <template>
     <div>
         <p>Ceramics</p>
-        <img :src="url" v-for="url in imgUrls">
+        <div class="col-sm-3" v-for="url in imgUrls">
+        <img :src="url">
+        </div>
     </div>
 </template>
 
@@ -25,3 +27,11 @@ export default {
 }
 
 </script>
+
+<style scoped>
+
+img {
+    width: 100%;
+}
+
+</style>

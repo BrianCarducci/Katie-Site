@@ -5,6 +5,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Paintings from './components/Paintings';
 import Ceramics from './components/Ceramics';
+import '@/assets/css/tailwind.css';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
