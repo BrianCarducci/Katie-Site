@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <div class="container">
       <Header/>
       <router-view :firebase="firebase"></router-view>
-    </div>
-    <img :src="src">
   </div>
 </template>
 
