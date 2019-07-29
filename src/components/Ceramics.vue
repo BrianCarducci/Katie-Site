@@ -27,12 +27,15 @@ export default {
     },
     mounted() {
         let ceramicsRef = firebase.storage().ref('Ceramics');
-        ceramicsRef.listAll().then(result => {
-            result.items.forEach(imageRef => {
-                imageRef.getDownloadURL()
-                .then(url => this.imgUrls.push(url))
-            })
-        }).catch(err => console.log(err));
+        ceramicsRef.listAll().then(folders => {
+           folders.prefixes.forEach(folder => {
+               folder.listAll().then(contents => {
+                   contents.items[0].getDownloadURL().then(url => {
+                       this.imgUrls.push(url);
+                   })
+               })
+           })
+        })
     }
 }
 
