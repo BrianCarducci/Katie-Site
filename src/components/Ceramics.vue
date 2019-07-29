@@ -1,7 +1,7 @@
 <template>
    <div class="grid py-8">
         <div class="max-w-sm rounded overflow-hidden shadow-lg mx-auto" v-for="url in imgUrls">
-            <img class="mx-auto p-2 h-64" :src="url" alt="Failed to load.">
+            <img class="mx-auto p-2 h-64 thumbnail" :src="url" alt="Failed to load.">
             <!-- <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
                 <p class="text-gray-700 text-base">
@@ -57,5 +57,10 @@ export default {
             grid-template-columns: repeat(3, 1fr);
         }    
     }
+
+    .thumbnail:hover {
+        cursor: pointer;
+        opacity: .7;
+    }    
 
 </style>

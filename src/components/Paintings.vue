@@ -52,8 +52,10 @@ export default {
     },
     methods: {
         expandImg: function(event) {
-            this.clickedImgSource = event.target.src;
-            this.imgClicked = true;
+            if (screen.width > 768) {
+                 this.clickedImgSource = event.target.src;
+                this.imgClicked = true;
+            }
         },
         closeImg: function(event) {
             this.imgClicked = false;
@@ -129,8 +131,8 @@ export default {
 }
 
 @keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
+  from {opacity: 0}
+  to {opacity: 1}
 }
 
 /* The Close Button */
