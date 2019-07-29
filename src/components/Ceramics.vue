@@ -1,7 +1,7 @@
 <template>
    <div class="grid py-8">
         <div class="max-w-sm rounded overflow-hidden shadow-lg mx-auto" v-for="url in imgUrls">
-            <img class="mx-auto p-2 h-64 thumbnail" :src="url" alt="Failed to load.">
+            <router-link to="/ceramicview"><img class="mx-auto p-2 h-64 thumbnail" :src="url" alt="Failed to load."></router-link>
             <!-- <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
                 <p class="text-gray-700 text-base">
@@ -36,6 +36,11 @@ export default {
                })
            })
         })
+    },
+    methods: {
+        thumbnailClicked: function() {
+
+        }
     }
 }
 

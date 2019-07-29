@@ -53,7 +53,7 @@ export default {
     methods: {
         expandImg: function(event) {
             if (screen.width > 768) {
-                 this.clickedImgSource = event.target.src;
+                this.clickedImgSource = event.target.src;
                 this.imgClicked = true;
             }
         },

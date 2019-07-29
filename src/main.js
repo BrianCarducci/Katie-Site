@@ -5,6 +5,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Paintings from './components/Paintings';
 import Ceramics from './components/Ceramics';
+import CeramicView from './components/CeramicView';
 import '@/assets/css/tailwind.css';
 
 Vue.config.productionTip = false;
@@ -14,7 +15,8 @@ const routes = [
   {path: '/', component: Home},
   {path: '/about', component: About},
   {path: '/paintings', component: Paintings},
-  {path: '/ceramics', component: Ceramics}
+  {path: '/ceramics', component: Ceramics},
+  {path: '/ceramicview', component: CeramicView}
 ];
 
 const router = new VueRouter({
