@@ -88,6 +88,10 @@ export default {
         cursor: pointer;
         opacity: .7;
     }    
+    .thumbnail { 
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
 
        /* The Modal (background) */
 .modal {

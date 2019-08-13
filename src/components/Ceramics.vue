@@ -1,7 +1,7 @@
 <template>
    <div class="grid py-8">
         <div class="max-w-sm rounded overflow-hidden shadow-lg mx-auto" v-for="url in imgUrls">
-            <router-link to="/ceramicview"><img class="mx-auto p-2 h-64 thumbnail" :src="url" alt="Failed to load."></router-link>
+            <router-link :to="{ name: 'CeramicView',  query: { imgPath: path } } "><img class="mx-auto p-2 h-64 thumbnail" :src="url" v-on:click="thumbnailClicked" alt="Failed to load."></router-link>
             <!-- <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
                 <p class="text-gray-700 text-base">
@@ -22,14 +22,22 @@
 export default {
     data() {
         return {
-            imgUrls: []
+            imgUrls: [],
+            folderPaths: [],
+            path: ''
         }
     },
     mounted() {
         let ceramicsRef = firebase.storage().ref('Ceramics');
         ceramicsRef.listAll().then(folders => {
            folders.prefixes.forEach(folder => {
+            //    this.folderPaths.push(folder.location.path);
                folder.listAll().then(contents => {
+                   let splitPath = contents.items[0].location.path.split('/');
+                   splitPath.pop();
+                   let adjustedPath = splitPath.join('/');
+                   console.log(adjustedPath)
+                   this.folderPaths.push(adjustedPath);
                    contents.items[0].getDownloadURL().then(url => {
                        this.imgUrls.push(url);
                    })
@@ -38,8 +46,15 @@ export default {
         })
     },
     methods: {
-        thumbnailClicked: function() {
-
+        thumbnailClicked: function(event) {
+            for (var i = 0; i < this.imgUrls.length; i++) {
+                if (event.target.src === this.imgUrls[i]) {
+                    break;
+                }
+            }
+            console.log(i)
+            this.path = this.folderPaths[i];
+            console.log(this.path)
         }
     }
 }
@@ -64,6 +79,15 @@ export default {
         .grid {
             grid-template-columns: repeat(3, 1fr);
         }    
+    }
+
+    @keyframes zoom {
+        from {opacity: 0}
+        to {opacity: 1}
+    }
+    .thumbnail { 
+        animation-name: zoom;
+        animation-duration: 0.6s;
     }
 
     .thumbnail:hover {

@@ -16,7 +16,7 @@ const routes = [
   {path: '/about', component: About},
   {path: '/paintings', component: Paintings},
   {path: '/ceramics', component: Ceramics},
-  {path: '/ceramicview', component: CeramicView}
+  {path: '/ceramicview', name: 'CeramicView', component: CeramicView}
 ];
 
 const router = new VueRouter({
