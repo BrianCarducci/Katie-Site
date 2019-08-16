@@ -31,13 +31,7 @@ export default {
         let ceramicsRef = firebase.storage().ref('Ceramics');
         ceramicsRef.listAll().then(folders => {
            folders.prefixes.forEach(folder => {
-            //    this.folderPaths.push(folder.location.path);
                folder.listAll().then(contents => {
-                   let splitPath = contents.items[0].location.path.split('/');
-                   splitPath.pop();
-                   let adjustedPath = splitPath.join('/');
-                   console.log(adjustedPath)
-                   this.folderPaths.push(adjustedPath);
                    contents.items[0].getDownloadURL().then(url => {
                        this.imgUrls.push(url);
                    })
@@ -47,14 +41,8 @@ export default {
     },
     methods: {
         thumbnailClicked: function(event) {
-            for (var i = 0; i < this.imgUrls.length; i++) {
-                if (event.target.src === this.imgUrls[i]) {
-                    break;
-                }
-            }
-            console.log(i)
-            this.path = this.folderPaths[i];
-            console.log(this.path)
+            let imgPath = event.target.src.split("Ceramics%2F")[1];
+            this.path = imgPath.split('%')[0];
         }
     }
 }
