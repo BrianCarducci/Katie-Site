@@ -44,8 +44,8 @@ export default {
     mounted() {
         let paintingsRef = firebase.storage().ref('Paintings');
         paintingsRef.listAll().then(result => {
-            result.items.forEach(imageRef => {
-                imageRef.getDownloadURL()
+            result.items.forEach(imgRef => {
+                imgRef.getDownloadURL()
                 .then(url => this.imgUrls.push(url))
             })
         }).catch(err => { console.log(err) });
