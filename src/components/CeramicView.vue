@@ -1,8 +1,8 @@
 <template>
     <div>
         
-        <h1 class="text-center text-xl p-1">Name of Piece</h1>
-        <div class="slideshow-container">
+        <h1 class="text-center text-xl p-1">{{title}}</h1>
+        <div class="slideshow-container" v-bind:style="{ width : slideWidth }">
 
             <div v-for="(url, index) in imgUrls" class="mySlides fade">
                 <div class="numbertext">{{index + 1}}/{{imgUrls.length}}</div>
@@ -11,6 +11,9 @@
 
             <a class="prev" v-on:click="prevSlide">&#10094;</a>
             <a class="next" v-on:click="nextSlide">&#10095;</a>
+        </div>
+        <div class="text-center">
+            <p>{{description}}</p>
         </div>
 
     </div>
@@ -22,13 +25,28 @@ export default {
     props: ['clickedImg'],
     data() {
         return {
+            title: '',
+            description: '',
             imgUrls: [],
             imgPath: '',
-            slides: ''
+            slides: '',
+            slideWidth: ''
         }
     },
     created() {
         this.imgPath = this.$route.query.imgPath;
+        let txtFilesRef = firebase.storage().ref(`Ceramics/${this.imgPath}/txtfiles`);
+        txtFilesRef.listAll().then(results => {
+            results.items[0].getDownloadURL().then(url => {
+                fetch(url).then(res => {
+                    res.text().then(text => {
+                        let textSplit = text.split(':');
+                        this.title = textSplit[0];
+                        this.description = textSplit[1];
+                    })
+                })
+            })
+        })
         let ceramicRef = firebase.storage().ref(`Ceramics/${this.imgPath}`);
         ceramicRef.listAll().then(result => {
             result.items[0].getDownloadURL().then(url => {
@@ -39,7 +57,7 @@ export default {
             altViewsRef.listAll().then(results => {
                 results.items.forEach(imgRef => {
                     imgRef.getDownloadURL().then(url => {
-                    this.imgUrls.push(url);
+                        this.imgUrls.push(url);
                     })
                 })
             })
@@ -47,9 +65,13 @@ export default {
     },
     mounted() {
         this.slides = document.getElementsByClassName('mySlides');
+        if (screen.width >  768) {
+            this.slideWidth = '25%';
+        } else {
+            this.slideWidth = '50%';
+        }
     },
     updated() {
-        
         this.slides[0].style.display = 'block';
     },
     methods: {
@@ -102,7 +124,6 @@ export default {
 
     /* Slideshow container */
 .slideshow-container {
-  width: 33%;
   position: relative;
   margin: auto;
 }
@@ -135,9 +156,9 @@ export default {
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
+/* .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
-}
+} */
 
 /* Number text (1/3 etc) */
 .numbertext {
